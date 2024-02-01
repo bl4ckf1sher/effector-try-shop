@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  padding: 20px 50px;
+}
+
+.ant-menu {
+  width: 100%;
+  margin-left: 1.25rem;
+}
+
+.ant-layout-footer {
+  color: white;
+  background: #484848;
+}
