@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Button } from "antd";
 import { useCart } from "../../controllers/Cart";
 
@@ -10,29 +10,23 @@ const QuantityChanger: React.FC<QuantityChangerProps> = React.memo(
   ({ productId }) => {
     const { getCartItems, changeCartItemQuantity } = useCart();
 
-    const onDecreaseQuantityClick = useCallback(
-      (event: React.MouseEvent<HTMLElement>) => {
-        event.stopPropagation();
-        try {
-          changeCartItemQuantity(productId, -1);
-        } catch (error) {
-          throw new Error(`Product or context not found. ${error}`);
-        }
-      },
-      [productId, changeCartItemQuantity]
-    );
+    const onDecreaseQuantityClick = (event: React.MouseEvent<HTMLElement>) => {
+      event.stopPropagation();
+      try {
+        changeCartItemQuantity(productId, -1);
+      } catch (error) {
+        throw new Error(`Product or context not found. ${error}`);
+      }
+    };
 
-    const onIncreaseQuantityClick = useCallback(
-      (event: React.MouseEvent<HTMLElement>) => {
-        event.stopPropagation();
-        try {
-          changeCartItemQuantity(productId, 1);
-        } catch (error) {
-          console.error("Product or context not found", error);
-        }
-      },
-      [productId, changeCartItemQuantity]
-    );
+    const onIncreaseQuantityClick = (event: React.MouseEvent<HTMLElement>) => {
+      event.stopPropagation();
+      try {
+        changeCartItemQuantity(productId, 1);
+      } catch (error) {
+        console.error("Product or context not found", error);
+      }
+    };
 
     const productQuantity = useMemo(() => {
       const productQuantity = getCartItems()[productId];

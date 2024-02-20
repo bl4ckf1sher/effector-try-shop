@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "antd";
 import { Product } from "../../shared/types";
@@ -17,17 +17,17 @@ export const SingleProductPage: React.FC = () => {
     [products, urlProductId]
   );
 
-  const onAddToCartClick = useCallback(() => {
+  const onAddToCartClick = () => {
     if (product) {
       addToCart(product.id);
     }
-  }, [product, addToCart]);
+  };
 
-  const onRemoveFromCartClick = useCallback(() => {
+  const onRemoveFromCartClick = () => {
     if (product) {
       removeFromCart(product.id);
     }
-  }, [product, removeFromCart]);
+  };
 
   if (!product) {
     return <div>Product not found</div>;
